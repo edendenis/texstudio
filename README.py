@@ -100,47 +100,60 @@
 # 
 # 1. Abra o ``TeXstudio``.
 # 
-# 2. Vá para o menu `Options` (Opções) no topo da janela.
+# 2. Vá para o menu `Options` (`Opções`) no topo da janela.
 # 
-# 3. Selecione `Configure `TeXstudio`` (Configurar `TeXstudio`).
+# 3. Selecione `Configure TeXstudio...` (`Configurar TeXstudio...`).
 # 
-# 4. Clique na janela de configurações, clique em `Adv. Editor` (Editor Avançado) na barra lateral esquerda.
+# 4. Clique na janela de configurações, clique em `Show Advanced Options` (`Mostrar Opções Avançadas`) na canto inferior esquerdo.
 # 
-# 5. Se precisar, role a barra de rolagem veritical para baixo, no painel à direita, você verá a opção `Auto Save All Files` (Auto Salvar Todos os Arquivos).
+# 5. Clique na janela de configurações, clique em `Adv. Editor` (`Editor Avançado`) na barra lateral esquerda.
 # 
-# 6. Marque a caixa ao lado de `Auto Save All Files` para habilitar essa funcionalidade.
+# 6. Se precisar, role a barra de rolagem veritical para baixo, no painel à direita, você verá a opção `Auto Save All Files` (Auto Salvar Todos os Arquivos).
+# 
+# 7. Marque a caixa ao lado de `Auto Save All Files` para habilitar essa funcionalidade.
 # 
 #     6.1 Você pode ajustar o intervalo de tempo para o `Auto Save All Files` de acordo com suas preferências. É recomendado colocar entre cerva de `5 minutes` a `10 minutes`, no máximo `20 minutes`, para que não fique salvando a todo momento e, ao mesmo tempo, caso o trabalho seja perdido por falta de energia elétrica, por exemplo, não será perdido todo ou muito do trabalho desenvolvido.
 # 
 # Isso deve ativar o `AutoSave` no `TeXstudio`, garantindo que suas alterações sejam salvas automaticamente em intervalos regulares. Lembre-se de clicar em "OK" para confirmar as alterações e fechar a janela de configurações.
 # 
 
-# In[ ]:
+# ## 3. Habilitar o `Auto-recompile` no `TeXstudio`
+# 
+# 1. Abra o ``TeXstudio``.
+# 
+# 2. Vá para o menu `Options` (`Opções`) no topo da janela.
+# 
+# 3. Selecione `Configure TeXstudio...` (`Configurar TeXstudio...`).
+# 
+# 4. Clique na janela de configurações, clique em `Internal PDF Viewer` (`Visualizador PDF Interno`) na barra lateral esquerda.
+# 
+# 5. Se precisar, role a barra de rolagem veritical para baixo, no painel à direita, você verá a opção `Auto-recompile documents on changes` (`Auto-recompilar`). Marque a caixa ao lado de `Auto-recompile documents on changes` para habilitar essa funcionalidade.
+# 
+# Isso deve ativar o `Auto-recompile documents on changes` no `TeXstudio`, garantindo que suas alterações sejam compiladas automaticamente após as alterações. Lembre-se de clicar em `"OK"` para confirmar as alterações e fechar a janela de configurações.
+# 
 
-
-## 3. Habilitar o `Auto-recompile` no `TeXstudio`
-
-1. Abra o ``TeXstudio``.
-
-2. Vá para o menu `Options` (Opções) no topo da janela.
-
-3. Selecione `Configure `TeXstudio`` (Configurar `TeXstudio`).
-
-4. Clique na janela de configurações, clique em `Internal PDF Viewer` (Visualizador PDF Interno) na barra lateral esquerda.
-
-5. Se precisar, role a barra de rolagem veritical para baixo, no painel à direita, você verá a opção `Auto-recompile documents on changes` (Auto-recompilar ).
-
-6. Marque a caixa ao lado de `Auto-recompile documents on changes` para habilitar essa funcionalidade.
-
-Isso deve ativar o `Auto-recompile documents on changes` no ``TeXstudio``, garantindo que suas alterações sejam compiladas automaticamente após as alterações. Lembre-se de clicar em "OK" para confirmar as alterações e fechar a janela de configurações.
-
+# ## 4. Habilitar o `Show Whitespace` no `TeXstudio`
+# 
+# 1. Abra o ``TeXstudio``.
+# 
+# 2. Vá para o menu `Options` (`Opções`) no topo da janela.
+# 
+# 3. Selecione `Configure TeXstudio...` (`Configurar TeXstudio...`).
+# 
+# 4. Clique na janela de configurações, clique em `Adv. Editor` (`Editor Avançcado`) na barra lateral esquerda.
+# 
+# 5. Se precisar, role a barra de rolagem veritical para baixo, no painel à direita, você verá a opção `Show Whitespace` (`Mostrar Espaço em Branco`). Marque a caixa ao lado de `Auto-recompile documents on changes` para habilitar essa funcionalidade.
+# 
+# Isso deve ativar o `Auto-recompile documents on changes` no `TeXstudio`, garantindo que suas alterações sejam compiladas automaticamente após as alterações. Lembre-se de clicar em `"OK"` para confirmar as alterações e fechar a janela de configurações.
+# 
 
 # ## Referências
 # 
-# [1] OPENAI. ***Instalar o texstudio no linux ubuntu:*** https://chat.openai.com/c/f308ebb4-ad7e-4ff2-a634-90ffd0c558f8 (texto adaptado). ChatGPT. Acessado em: 29/09/2023 18:56.
+# [1] OPENAI. ***Instalar o texstudio no linux ubuntu:*** Disponível em: <https://chat.openai.com/c/f308ebb4-ad7e-4ff2-a634-90ffd0c558f8> (texto adaptado). ChatGPT. Acessado em: 29/09/2023 18:56.
 # 
-# [2] OPENAI. ***Vs code: editor popular:*** https://chat.openai.com/c/b640a25d-f8e3-4922-8a3b-ed74a2657e42 (texto adaptado). ChatGPT. Acessado em: 14/11/2023 18:56.
+# [2] OPENAI. ***Vs code: editor popular:*** Disponível em: <https://chat.openai.com/c/b640a25d-f8e3-4922-8a3b-ed74a2657e42> (texto adaptado). ChatGPT. Acessado em: 14/11/2023 18:56.
 # 
-# [3] OPENAI. ***Ativar autosave no `TeXstudio`:*** https://chat.openai.com/c/210ca6d2-7da5-4830-890a-b8e1cb0ee7ee (texto adaptado). ChatGPT. Acessado em: 27/11/2023 10:44.
+# [3] OPENAI. ***Ativar autosave no `texstudio`.*** Disponível em: <https://chat.openai.com/c/210ca6d2-7da5-4830-890a-b8e1cb0ee7ee> (texto adaptado). ChatGPT. Acessado em: 27/11/2023 10:44.
 # 
-# [4] OPENAI. ***Texstudio auto-compilation/live preview feature (latex tips)/solution-51:*** https://www.youtube.com/watch?v=hO1LmNtKg1w (texto adaptado). ChatGPT. Acessado em: 18/01/2024 08:46.
+# [4] OPENAI. ***Texstudio auto-compilation/live preview feature (latex tips)/solution-51.*** Disponível em: <https://www.youtube.com/watch?v=hO1LmNtKg1w> (texto adaptado). ChatGPT. Acessado em: 18/01/2024 08:46.
+# 
