@@ -40,6 +40,10 @@
 # 
 # A função `Auto-recompile` é um recurso em ambientes de desenvolvimento que permite recompilar automaticamente o código-fonte sempre que alterações são detectadas nos arquivos. Isso agiliza o processo de desenvolvimento, pois elimina a necessidade de recompilação manual, permitindo que os desenvolvedores vejam imediatamente os efeitos das mudanças no código durante a execução do programa. Esse recurso é especialmente útil em linguagens de programação que exigem compilação, proporcionando um fluxo de trabalho mais eficiente e interativo, além de facilitar a depuração e o teste de novas funcionalidades.
 # 
+# ### `Show line numbers`
+# 
+# A função `Show Line Numbers` é um recurso presente em muitos editores de texto e ambientes de desenvolvimento que exibe números de linha ao lado do código ou texto editável. Essa funcionalidade é extremamente útil para programadores e escritores, pois facilita a navegação no documento, permitindo que os usuários se referenciem facilmente a partes específicas do texto ou código. Além disso, ao depurar ou revisar código, os números de linha ajudam a identificar rapidamente onde ocorrem erros ou onde são necessárias alterações, melhorando a eficiência do processo de desenvolvimento.
+# 
 # ### `Show whitespace`
 # 
 # A função `Show Whitespace` é um recurso disponível em muitos editores de texto e ambientes de desenvolvimento que permite visualizar caracteres de espaço em branco, como espaços, tabulações e quebras de linha. Ao ativar essa opção, os usuários podem identificar facilmente a formatação do texto e detectar problemas de alinhamento ou espaços desnecessários que podem afetar a legibilidade ou a execução do código. Essa funcionalidade é especialmente útil para programadores e redatores, pois ajuda a manter um código limpo e organizado, além de facilitar a colaboração em projetos onde a consistência na formatação é importante.
@@ -145,11 +149,11 @@
 # Se o arquivo de perfil for fornecido corretamente, essa abordagem permite que você configure o `TeXstudio` de maneira rápida e consistente e **NÃO** irá precisar seguir as Seções de configuração a seguir.
 # 
 
-# ## 2. Habilitar o `Auto Save All Files` no `TeXstudio`
+# ## 3. Habilitar o `Auto Save All Files` no `TeXstudio`
 # 
-# Para habilitar o `Auto Save All Files` no ``TeXstudio``, siga os passos abaixo:
+# Para habilitar o `Auto Save All Files` no `TeXstudio`, siga os passos abaixo:
 # 
-# 1. Abra o ``TeXstudio``.
+# 1. Abra o `TeXstudio`.
 # 
 # 2. Vá para o menu `Options` (`Opções`) no topo da janela.
 # 
@@ -168,7 +172,7 @@
 # Isso deve ativar o `AutoSave` no `TeXstudio`, garantindo que suas alterações sejam salvas automaticamente em intervalos regulares. Lembre-se de clicar em `OK` para confirmar as alterações e fechar a janela de configurações.
 # 
 
-# ## 3. Habilitar o `Auto-recompile` no `TeXstudio`
+# ## 4. Habilitar o `Auto-recompile` no `TeXstudio`
 # 
 # 1. Abra o ``TeXstudio``.
 # 
@@ -183,7 +187,7 @@
 # Isso deve ativar o `Auto-recompile documents on changes` no `TeXstudio`, garantindo que suas alterações sejam compiladas automaticamente após as alterações. Lembre-se de clicar em `"OK"` para confirmar as alterações e fechar a janela de configurações.
 # 
 
-# ## 4. Habilitar o `Show Whitespace` no `TeXstudio`
+# ## 5. Habilitar o `Show Whitespace` no `TeXstudio`
 # 
 # 1. Abra o ``TeXstudio``.
 # 
@@ -256,6 +260,44 @@
 #     -**Hard Line Wrap (Quebra de linha rígida) após um número fixo de caracteres**: A linha será visualmente quebrada ao alcançar a borda da janela do editor. Se você redimensionar a janela, a linha será reformatada de acordo com o novo tamanho da janela.
 # 
 # Isso deve alterar o `Line wrapping` no `TeXstudio`, garantindo que suas alterações sejam salvas automaticamente em intervalos regulares. Lembre-se de clicar em `OK` para confirmar as alterações e fechar a janela de configurações.
+# 
+
+# ## 8. Habilitar a exibição dos números de linha (`Show Line Numbers`)
+# 
+# Para habilitar a exibição dos números de linha (`Show Line Numbers`) no `TeXstudio`, siga os passos abaixo:
+# 
+# 1. Abra o TeXstudio.
+# 
+# 2. No menu superior, vá até `Options` (`Opções`).
+# 
+# 3. Selecione `Configure TeXstudio` (`Configurar TeXstudio`).
+# 
+# 4. No painel à esquerda, clique em `Editor`.
+# 
+# 5. No lado direito, procure a opção `Show Line Numbers` (`Exibir Números de Linha`).
+# 
+# 6. Marque a caixa ao lado dessa opção para habilitar os números de linha.
+# 
+# 7. Clique em `OK` ou `Apply` para salvar as configurações.
+# 
+# Agora os números de linha devem aparecer no lado esquerdo do editor, facilitando a navegação e o acompanhamento do código.
+# 
+
+# ## 9. Compilar o Arquivo Ativo Definindo-o como Documento Raiz:
+# 
+# Aqui está o passo a passo para compilar apenas o arquivo ativo no `TeXstudio`, definindo-o como o Documento Raiz:
+# 
+# 1. **Certifique-se de que o arquivo que deseja compilar está ativo**: O arquivo que você quer compilar deve estar aberto e visível no editor. Isso significa que é o arquivo que você está editando no momento.
+# 
+# 2. **Acesse o Menu de Opções**: No menu superior do `TeXstudio`, clique em `Options` (`Opções`).
+# 
+# 3. **Selecione o Documento Raiz**: No menu suspenso, vá até a opção `Root Document` (`Documento Raiz`).
+# 
+# 4. **Defina o Documento Ativo como Raiz Explícita**: No submenu, selecione a opção `Set Current Document As Explicit Root` (`Definir Documento Atual como Raiz Explícita`).
+# 
+# 5. **Compilar o Documento**: Agora, ao compilar o documento (pressionando `F5` ou clicando no botão de `Compilar & Visualizar`), somente o arquivo ativo será compilado, mesmo que ele seja parte de um projeto maior.
+# 
+# Este procedimento assegura que o `TeXstudio` irá compilar apenas o documento ativo e ignorar outros arquivos, exceto se houver referências explícitas dentro do arquivo que você está compilando.
 # 
 
 # ## Referências
