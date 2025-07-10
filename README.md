@@ -59,34 +59,77 @@ Para configurar/instalar/usar o `TeXstudio` no `Linux Ubuntu`, você pode seguir
 
 2. Certifique-se de que seu sistema esteja limpo e atualizado.
 
-    2.1 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando: `sudo apt clean` 
+    2.1 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando:
     
-    2.2 Remover pacotes `.deb` antigos ou duplicados do cache local. É útil para liberar espaço, pois remove apenas os pacotes que não podem mais ser baixados (ou seja, versões antigas de pacotes que foram atualizados). Digite o seguinte comando: `sudo apt autoclean`
-
-    2.3 Remover pacotes que foram automaticamente instalados para satisfazer as dependências de outros pacotes e que não são mais necessários. Digite o seguinte comando: `sudo apt autoremove -y`
-
-    2.4 Buscar as atualizações disponíveis para os pacotes que estão instalados em seu sistema. Digite o seguinte comando e pressione `Enter`: `sudo apt update`
-
-    2.5 **Corrigir pacotes quebrados**: Isso atualizará a lista de pacotes disponíveis e tentará corrigir pacotes quebrados ou com dependências ausentes: `sudo apt --fix-broken install`
-
-    2.6 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando: `sudo apt clean` 
+    ```bash
+    sudo apt clean
+    ``` 
     
-    2.7 Para ver a lista de pacotes a serem atualizados, digite o seguinte comando e pressione `Enter`:  `sudo apt list --upgradable`
-
-    2.8 Realmente atualizar os pacotes instalados para as suas versões mais recentes, com base na última vez que você executou `sudo apt update`. Digite o seguinte comando e pressione `Enter`: `sudo apt full-upgrade -y`
+    2.2 Remover pacotes `.deb` antigos ou duplicados do cache local. É útil para liberar espaço, pois remove apenas os pacotes que não podem mais ser baixados (ou seja, versões antigas de pacotes que foram atualizados). Digite o seguinte comando:
     
+    ```bash
+    sudo apt autoclean
+    ```
 
-3. **Instale o `TeXstudio`:** Você pode instalar o `TeXstudio` diretamente a partir dos repositórios oficiais do `Linux Ubuntu` usando o comando `apt`. Execute o seguinte comando para instalar: `sudo apt install texstudio -y`
+    2.3 Remover pacotes que foram automaticamente instalados para satisfazer as dependências de outros pacotes e que não são mais necessários. Digite o seguinte comando:
+    
+    ```bash
+    sudo apt autoremove -y
+    ```
+
+    2.4 Buscar as atualizações disponíveis para os pacotes que estão instalados em seu sistema. Digite o seguinte comando e pressione `Enter`: 
+    
+    ```bash
+    sudo apt update
+    ```
+
+    2.5 **Corrigir pacotes quebrados**: Isso atualizará a lista de pacotes disponíveis e tentará corrigir pacotes quebrados ou com dependências ausentes:
+    
+    ```bash
+    sudo apt --fix-broken install
+    ```
+
+    2.6 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando:
+    
+    ```bash
+    sudo apt clean
+    ``` 
+    
+    2.7 Para ver a lista de pacotes a serem atualizados, digite o seguinte comando e pressione `Enter`:  
+    
+    ```bash
+    sudo apt list --upgradable
+    ```
+
+    2.8 Realmente atualizar os pacotes instalados para as suas versões mais recentes, com base na última vez que você executou `sudo apt update`. Digite o seguinte comando e pressione `Enter`:
+    
+    ```bash
+    sudo apt full-upgrade -y
+    ```
+
+3. **Instale o `TeXstudio`:** Você pode instalar o `TeXstudio` diretamente a partir dos repositórios oficiais do `Linux Ubuntu` usando o comando `apt`. Execute o seguinte comando para instalar:
+
+    ```bash
+    sudo apt install texstudio -y
+    ```
 
     - O sistema pode pedir a sua senha de administrador para confirmar a instalação. Digite a senha e pressione `Enter`.
 
-    - Execute o comando a seguir para corrigir a interrupção no `dpkg`: `sudo dpkg --configure -a`
+    - Execute o comando a seguir para corrigir a interrupção no `dpkg`:
+    
+    ```bash
+    sudo dpkg --configure -a
+    ```
 
 - **Confirme a instalação:** Caso peça a senha, depois de digitar sua senha, o sistema perguntará se você deseja continuar com a instalação. Digite `Y` e pressione `Enter` para confirmar.
 
     - O `TeXstudio` será baixado e instalado automaticamente no seu sistema.
 
-5. Verifique a instalação: Após a instalação ser concluída com sucesso, você pode verificar se o `TeXstudio` está instalado corretamente, executando o comando: texstudio --version`
+5. Verifique a instalação: Após a instalação ser concluída com sucesso, você pode verificar se o `TeXstudio` está instalado corretamente, executando o comando:
+
+    ```bash
+    texstudio --version
+    ```
 
     - Isso exibirá a versão do `TeXstudio` instalada no seu sistema.
 
@@ -101,7 +144,7 @@ Para configurar/instalar/usar o `TeXstudio` no `Linux Ubuntu` sem precisar digit
 
 2. Digite o seguinte comando e pressione `Enter`:
 
-    ```
+    ```bash
     sudo apt clean
     sudo apt autoclean
     sudo apt autoremove -y
@@ -129,7 +172,9 @@ Para carregar um arquivo de configuração (como `/docs/profile_edenedfsls`) no 
 
     4.1 Uma janela será aberta para você navegar no sistema de arquivos. Encontre o arquivo `/docs/profile_edenedfsls` no local onde ele está armazenado.
 
-    4.2 Selecione o arquivo e clique em "Abrir" ou "Open".
+    4.2 Selecione a opção `Todos os arquivos` ou `All files`
+
+    4.3 Selecione o arquivo e clique em `"Abrir"` ou `"Open"`.
 
 5. **Verifique as Configurações**:
 
@@ -205,7 +250,7 @@ Isso deve ativar o `Auto-recompile documents on changes` no `TeXstudio`, garanti
 
 Para resolver o problema abaixo:
 
-```
+```bash
 sudo dpkg --configure -a
 Setting up context (2021.03.05.20220211-1) ...
 Running mtxrun --generate. This may take some time... done.
@@ -280,7 +325,7 @@ Para habilitar a exibição dos números de linha (`Show Line Numbers`) no `TeXs
 Agora os números de linha devem aparecer no lado esquerdo do editor, facilitando a navegação e o acompanhamento do código.
 
 
-## 9. Compilar o Arquivo Ativo Definindo-o como Documento Raiz:
+## 9. Compilar o Arquivo Ativo Definindo-o como Documento Raiz
 
 Aqui está o passo a passo para compilar apenas o arquivo ativo no `TeXstudio`, definindo-o como o Documento Raiz:
 
@@ -296,6 +341,101 @@ Aqui está o passo a passo para compilar apenas o arquivo ativo no `TeXstudio`, 
 
 Este procedimento assegura que o `TeXstudio` irá compilar apenas o documento ativo e ignorar outros arquivos, exceto se houver referências explícitas dentro do arquivo que você está compilando.
 
+
+## 10. Gerar a Lista de Nomenclaturas (variáveis)
+
+Para que a sua lista de nomenclaturas seja efetivamente gerada e apareça no `main_<nome_do_projeto>.pdf` você precisa:
+
+1. **Carregar o pacote e declarar a nomenclatura**: No preâmbulo do seu `main_<nome_do_projeto>.tex` inclua algo como:
+
+  ```latex
+  % no preâmbulo do main.tex
+  \usepackage[intoc]{nomencl}   % intoc = adiciona ao sumário
+  \makenomenclature            % gera a lista
+  ```
+  Se você já usa `\input{preamble.tex}`, coloque essas duas linhas lá.
+
+2. **Inserir o comando de impressão**: No ponto onde você quer que apareça a lista (normalmente logo após o sumário), coloque:
+
+  ```latex
+  \printnomenclature
+  ```
+
+3. **Compilar na ordem correta**: 
+
+    Depois de rodar
+
+    ```bash
+    pdflatex `main_<nome_do_projeto>.tex`
+    ```
+
+    é preciso chamar o `makeindex` para processar a nomenclatura:
+
+    ```bash
+    makeindex `main_<nome_do_projeto>`.nlo -s nomencl.ist -o `main_<nome_do_projeto>`.nls
+    ```
+    
+    e só então rodar novamente:
+
+    ```bash
+    pdflatex `main_<nome_do_projeto>.pdf`.tex
+    pdflatex `main_<nome_do_projeto>.pdf`.tex  % uma segunda vez garante referências corretas
+    ```
+
+Pronto — agora, repetindo o passo de `makeindex`, a sua lista deve aparecer em `main_<nome_do_projeto>.pdf`.
+
+## 11. Gerar o Índice Remissivo (Index)
+
+Para que o índice remissivo (lista de palavras-chave com referência às páginas, como em livros técnicos) apareça corretamente no arquivo `main_<nome_do_projeto>.pdf`, siga os passos abaixo:
+
+1. **Carregar o pacote e ativar o índice**: No preâmbulo do seu `main_<nome_do_projeto>.tex` (ou no `preamble.tex`), inclua as seguintes linhas:
+
+  ```latex
+  \usepackage{makeidx}  % habilita suporte ao índice
+  \makeindex            % ativa a criação do arquivo .idx
+  ```
+
+2. **Inserir entradas para o índice**: No corpo do seu texto, marque as palavras ou termos que devem aparecer no índice com o comando:
+
+  ```latex
+  \index{palavra-chave}
+  ```
+
+  Exemplos:
+
+  ```latex
+  O número de Mach\index{número de Mach} é fundamental no escoamento compressível.
+  O programa RPA\index{RPA} é utilizado para análise de motores foguetes.
+  ```
+  
+  Você também pode usar índices hierárquicos, do tipo:
+
+  ```latex
+  \index{combustão!pré-misturada}
+  \index{combustão!estequiométrica}
+  ```
+
+3. **Inserir o índice no documento**: No ponto onde você deseja que o índice seja impresso (normalmente ao final do documento), adicione:
+
+  ```latex
+  \cleardoublepage
+  \phantomsection
+  \addcontentsline{toc}{section}{Índice Remissivo}
+  \printindex
+  ```
+
+4. **Compilar na ordem correta**: Compile o documento usando a seguinte sequência de comandos:
+
+  ```bash
+  pdflatex main_<nome_do_projeto>.tex
+  makeindex main_<nome_do_projeto>
+  pdflatex main_<nome_do_projeto>.tex
+  pdflatex main_<nome_do_projeto>.tex
+  ```
+
+Pronto! Agora, o índice remissivo será gerado e aparecerá corretamente no final do seu `main_<nome_do_projeto>.pdf`.
+
+> **Obs.**: Para garantir que o índice apareça no sumário, é importante usar `\addcontentsline` como mostrado acima. Se estiver usando a classe `book` ou `abntex2`, o comando pode ser adaptado para `\chapter*{Índice Remissivo}` ou `\section*{Índice Remissivo}`, conforme a estrutura do documento.
 
 ## Referências
 
