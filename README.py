@@ -431,7 +431,7 @@
 # 
 #   ```bash
 #   pdflatex main_<nome_do_projeto>.tex
-#   makeindex main_<nome_do_projeto>
+#   makeindex main_<nome_do_projeto>.idx
 #   pdflatex main_<nome_do_projeto>.tex
 #   pdflatex main_<nome_do_projeto>.tex
 #   ```
