@@ -439,7 +439,7 @@ Pronto! Agora, o índice remissivo será gerado e aparecerá corretamente no fin
 
 ## 12. Como compilar
 
-Para que as citações apareçam corretamente, o documento precisa ser
+1. Para que as citações apareçam corretamente, o documento precisa ser
 compilado executando o `BibTeX`. A maneira recomendada é utilizar o
 `latexmk`, que automatiza todo o processo:
 
