@@ -375,7 +375,7 @@
 #     Depois de rodar
 # 
 #     ```bash
-#     pdflatex `main_<nome_do_projeto>.tex`
+#     pdflatex -interaction=batchmode main_<nome_do_projeto>.tex
 #     ```
 # 
 #     é preciso chamar o `makeindex` para processar a nomenclatura:
@@ -387,8 +387,8 @@
 #     e só então rodar novamente:
 # 
 #     ```bash
-#     pdflatex `main_<nome_do_projeto>.pdf`.tex
-#     pdflatex `main_<nome_do_projeto>.pdf`.tex  % uma segunda vez garante referências corretas
+#     pdflatex -interaction=batchmode main_<nome_do_projeto>.tex
+#     pdflatex -interaction=batchmode main_<nome_do_projeto>.tex  % uma segunda vez garante referências corretas
 #     ```
 # 
 # Pronto — agora, repetindo o passo de `makeindex`, a sua lista deve aparecer em `main_<nome_do_projeto>.pdf`.
@@ -442,10 +442,10 @@
 # 5. **Compilar na ordem correta**: Compile o documento usando a seguinte sequência de comandos:
 # 
 #   ```bash
-#   pdflatex main_<nome_do_projeto>.tex
+#   pdflatex -interaction=batchmode main_<nome_do_projeto>.tex
 #   makeindex main_<nome_do_projeto>.idx
-#   pdflatex main_<nome_do_projeto>.tex
-#   pdflatex main_<nome_do_projeto>.tex
+#   pdflatex -interaction=batchmode main_<nome_do_projeto>.tex
+#   pdflatex -interaction=batchmode main_<nome_do_projeto>.tex
 #   ```
 # 
 # Pronto! Agora, o índice remissivo será gerado e aparecerá corretamente no final do seu `main_<nome_do_projeto>.pdf`.
@@ -465,16 +465,16 @@
 # `latexmk`, que automatiza todo o processo:
 # 
 # ```bash
-# latexmk -pdf -silent main_thesis.tex
+# latexmk -pdf -silent main_<nome_do_projeto>.tex
 # ```
 # 
 # Se desejar chamar cada etapa manualmente, use a sequência abaixo:
 # 
 # ```bash
-# pdflatex main_thesis.tex
-# bibtex main_thesis
-# pdflatex main_thesis.tex
-# pdflatex main_thesis.tex
+# pdflatex -interaction=batchmode main_<nome_do_projeto>.tex
+# bibtex main_<nome_do_projeto>
+# pdflatex -interaction=batchmode main_<nome_do_projeto>.tex
+# pdflatex -interaction=batchmode main_<nome_do_projeto>.tex
 # ```
 # 
 # Isso garantirá que comandos como `\cite{Linnaeus1758}` produzam a
