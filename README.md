@@ -437,6 +437,28 @@ Pronto! Agora, o índice remissivo será gerado e aparecerá corretamente no fin
 
 > **Obs.**: Para garantir que o índice apareça no sumário, é importante usar `\addcontentsline` como mostrado acima. Se estiver usando a classe `book` ou `abntex2`, o comando pode ser adaptado para `\chapter*{Índice Remissivo}` ou `\section*{Índice Remissivo}`, conforme a estrutura do documento.
 
+## 12. Como compilar
+
+Para que as citações apareçam corretamente, o documento precisa ser
+compilado executando o `BibTeX`. A maneira recomendada é utilizar o
+`latexmk`, que automatiza todo o processo:
+
+```bash
+latexmk -pdf main_thesis.tex
+```
+
+Se desejar chamar cada etapa manualmente, use a sequência abaixo:
+
+```bash
+pdflatex main_thesis.tex
+bibtex main_thesis
+pdflatex main_thesis.tex
+pdflatex main_thesis.tex
+```
+
+Isso garantirá que comandos como `\cite{Linnaeus1758}` produzam a
+referência adequada no PDF final.
+
 ## Referências
 
 [1] OPENAI. ***Ativar autosave no `texstudio`.*** Disponível em: <https://chat.openai.com/c/210ca6d2-7da5-4830-890a-b8e1cb0ee7ee> (texto adaptado). ChatGPT. Acessado em: 27/11/2023 10:44.
