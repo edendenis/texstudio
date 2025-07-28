@@ -462,7 +462,7 @@ compilado executando o `BibTeX`. A maneira recomendada é utilizar o
 `latexmk`, que automatiza todo o processo:
 
 ```bash
-latexmk -pdf main_thesis.tex
+latexmk -pdf -silent main_thesis.tex
 ```
 
 Se desejar chamar cada etapa manualmente, use a sequência abaixo:
