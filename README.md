@@ -361,7 +361,13 @@ Para que a sua lista de nomenclaturas seja efetivamente gerada e apareça no `ma
   \printnomenclature
   ```
 
-3. **Compilar na ordem correta**: 
+3. **Limpe os arquivos auxiliares (opcional mas recomendado)**:
+
+```bash
+latexmk -C
+```
+
+4. **Compilar na ordem correta**: 
 
     Depois de rodar
 
@@ -424,7 +430,13 @@ Para que o índice remissivo (lista de palavras-chave com referência às págin
   \printindex
   ```
 
-4. **Compilar na ordem correta**: Compile o documento usando a seguinte sequência de comandos:
+4. **Limpe os arquivos auxiliares (opcional mas recomendado)**:
+
+```bash
+latexmk -C
+```
+
+5. **Compilar na ordem correta**: Compile o documento usando a seguinte sequência de comandos:
 
   ```bash
   pdflatex main_<nome_do_projeto>.tex
@@ -439,7 +451,13 @@ Pronto! Agora, o índice remissivo será gerado e aparecerá corretamente no fin
 
 ## 12. Como compilar
 
-1. Para que as citações apareçam corretamente, o documento precisa ser
+1. **Limpe os arquivos auxiliares (opcional mas recomendado)**:
+
+```bash
+latexmk -C
+```
+
+2. Para que as citações apareçam corretamente, o documento precisa ser
 compilado executando o `BibTeX`. A maneira recomendada é utilizar o
 `latexmk`, que automatiza todo o processo:
 
