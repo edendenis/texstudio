@@ -26,16 +26,12 @@ done < <(git branch --format='%(refname:short)' | sort -u)
 # Remotas reais: refs/remotes/origin/*, ignorando origin/HEAD
 while read -r rb; do
   name="${rb#origin/}"
-  { [ "$name" = "HEAD" ] || [ -z "$name" ]; } && continue
-  if ! printf '%s\0' "${BRANCHES[@]}" | grep -Fxqz -- "$name"; then
-    BRANCHES+=("$name")
+  # Ignora HEAD e duplicatas
+  if [[ "$name" = "HEAD" ]] || [[ " ${BRANCHES[*]} " =~ " $name " ]]; then
+    continue
   fi
+  BRANCHES+=("$name")
 done < <(git for-each-ref --format='%(refname:short)' refs/remotes/origin | sort -u)
-
-if [ "${#BRANCHES[@]}" -eq 0 ]; then
-  echo "[ERROR] No branches found."
-  exit 1
-fi
 
 # Mostrar numeradas com marcador (local/remote)
 echo "[INFO] Available branches:"
