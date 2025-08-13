@@ -7,7 +7,6 @@ Neste documento estão contidos os principais comandos e configurações para co
 ## _Abstract_
 
 _This document contains the main commands and settings for configuring/installing/use `TeXstudio` on `Linux Ubuntu`._ 
-
 ### Construído com
 
 Esta seção deve listar todas as principais estruturas/bibliotecas usadas para inicializar seu projeto, bem como a sequência de instalação. Deixe quaisquer complementos/plugins para a seção de agradecimentos. Aqui estão alguns exemplos.
@@ -21,7 +20,6 @@ Esta seção deve listar todas as principais estruturas/bibliotecas usadas para 
 * [![MathPix](https://img.shields.io/badge/MathPix-008080?style=flat-square&logo=MathPix&logoColor=white)](https://mathpix.com/)
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
-
 
 ## Descrição [2]
 
@@ -49,13 +47,11 @@ A função `Show Whitespace` é um recurso disponível em muitos editores de tex
 
 O `L=line wrapping` refere-se à prática de ajustar automaticamente o texto para que ele se encaixe dentro dos limites de uma janela ou área designada em um editor de texto, processador de texto ou interface de usuário. Quando o texto atinge a borda da área visível, ele "quebra" para a linha seguinte, permitindo que o conteúdo seja legível sem a necessidade de rolagem horizontal. O `line wrapping` é especialmente útil em documentos longos ou códigos, pois melhora a legibilidade e a organização do conteúdo, facilitando a edição e revisão sem perder informações visíveis.
 
-
 ## 1. Configurar/Instalar/Usar o `TeXstudio` no `Linux Ubuntu` [1]
 
 Para configurar/instalar/usar o `TeXstudio` no `Linux Ubuntu`, você pode seguir os seguintes passos:
 
 1. Abra o `Terminal Emulator`. Você pode fazer isso pressionando: `Ctrl + Alt + T`
-
 
 2. Certifique-se de que seu sistema esteja limpo e atualizado.
 
@@ -106,7 +102,6 @@ Para configurar/instalar/usar o `TeXstudio` no `Linux Ubuntu`, você pode seguir
     ```bash
     sudo apt full-upgrade -y
     ```
-
 3. **Instale o `TeXstudio`:** Você pode instalar o `TeXstudio` diretamente a partir dos repositórios oficiais do `Linux Ubuntu` usando o comando `apt`. Execute o seguinte comando para instalar:
 
     ```bash
@@ -135,7 +130,6 @@ Para configurar/instalar/usar o `TeXstudio` no `Linux Ubuntu`, você pode seguir
 
 Agora, você deve ter o `TeXstudio` instalado no seu `Linux Ubuntu` e pronto para ser usado para edição de documentos `LaTeX`. Você pode iniciar o `TeXstudio` a partir do menu de aplicativos ou usando o comando `TeXstudio` no `Terminal`.
 
-
 ## 1.1 Código completo para configurar/instalar/usar o `TeXstudio` no `Linux Ubuntu` 
 
 Para configurar/instalar/usar o `TeXstudio` no `Linux Ubuntu` sem precisar digitar linha por linha, você pode seguir estas etapas:
@@ -157,7 +151,6 @@ Para configurar/instalar/usar o `TeXstudio` no `Linux Ubuntu` sem precisar digit
     texstudio
     texstudio --version
     ```
-
 ## 2. Carregar o arquivo de perfil no seu `TeXstudio`
 
 Para carregar um arquivo de configuração (como `/docs/profile_edenedfsls`) no `TeXstudio`, e evitar configurar manualmente todas as opções, você pode seguir este procedimento:
@@ -190,7 +183,6 @@ O arquivo de perfil contém as preferências e configurações do `TeXstudio` qu
 
 Se o arquivo de perfil for fornecido corretamente, essa abordagem permite que você configure o `TeXstudio` de maneira rápida e consistente e **NÃO** irá precisar seguir as Seções de configuração a seguir.
 
-
 ## 3. Habilitar o `Auto Save All Files` no `TeXstudio`
 
 Para habilitar o `Auto Save All Files` no `TeXstudio`, siga os passos abaixo:
@@ -213,7 +205,6 @@ Para habilitar o `Auto Save All Files` no `TeXstudio`, siga os passos abaixo:
 
 Isso deve ativar o `AutoSave` no `TeXstudio`, garantindo que suas alterações sejam salvas automaticamente em intervalos regulares. Lembre-se de clicar em `OK` para confirmar as alterações e fechar a janela de configurações.
 
-
 ## 4. Habilitar o `Auto-recompile` no `TeXstudio`
 
 1. Abra o ``TeXstudio``.
@@ -228,7 +219,6 @@ Isso deve ativar o `AutoSave` no `TeXstudio`, garantindo que suas alterações s
 
 Isso deve ativar o `Auto-recompile documents on changes` no `TeXstudio`, garantindo que suas alterações sejam compiladas automaticamente após as alterações. Lembre-se de clicar em `"OK"` para confirmar as alterações e fechar a janela de configurações.
 
-
 ## 5. Habilitar o `Show Whitespace` no `TeXstudio`
 
 1. Abra o ``TeXstudio``.
@@ -242,7 +232,6 @@ Isso deve ativar o `Auto-recompile documents on changes` no `TeXstudio`, garanti
 5. Se precisar, role a barra de rolagem veritical para baixo, no painel à direita, você verá a opção `Show Whitespace` (`Mostrar Espaço em Branco`). Marque a caixa ao lado de `Auto-recompile documents on changes` para habilitar essa funcionalidade.
 
 Isso deve ativar o `Auto-recompile documents on changes` no `TeXstudio`, garantindo que suas alterações sejam compiladas automaticamente após as alterações. Lembre-se de clicar em `OK` para confirmar as alterações e fechar a janela de configurações.
-
 
 ## 5. Erros
 
@@ -259,7 +248,6 @@ Pregenerating ConTeXt MarkIV format. This may take some time...
 
 1. Aperte `Enter` mais de uma vez depois de executar o comando `sudo dpkg configure -a` ou `Ctrl+C`
 
-
 ## 6. Alterar/Configurar o `Terminal Emulator` no `TeXstudio`
 
 Na seção de configuração do `Terminal Emulator` interno do `TeXstudio`. Nesta tela, você pode definir várias configurações para o `Terminal Emulator` integrado que é usado dentro do próprio `TeXstudio`. Vou explicar o que cada uma dessas opções faz e como você pode configurá-las:
@@ -273,7 +261,6 @@ Na seção de configuração do `Terminal Emulator` interno do `TeXstudio`. Nest
 3. **`Font Size` (`Tamanho da fonte`)**: Define o tamanho da fonte usada no `Terminal Emulator` interno. No seu caso, está definido como `9`. Você pode aumentar ou diminuir conforme sua preferência para melhorar a legibilidade, por exemplo: `9`
 
 4. **`Shell`**: Este campo define qual `shell` será usado no `Terminal Emulator` interno do `TeXstudio`. No seu caso, está configurado para usar o `zsh` (`/bin/zsh`). Se você preferir usar o `bash`, por exemplo, você pode mudar este campo para `/bin/bash`.
-
 
 ## 7. Alterar o `Line wrapping` no `TeXstudio`
 
@@ -303,7 +290,6 @@ Para alterar o `Line wrapping` no ``TeXstudio``, siga os passos abaixo:
 
 Isso deve alterar o `Line wrapping` no `TeXstudio`, garantindo que suas alterações sejam salvas automaticamente em intervalos regulares. Lembre-se de clicar em `OK` para confirmar as alterações e fechar a janela de configurações.
 
-
 ## 8. Habilitar a exibição dos números de linha (`Show Line Numbers`)
 
 Para habilitar a exibição dos números de linha (`Show Line Numbers`) no `TeXstudio`, siga os passos abaixo:
@@ -324,7 +310,6 @@ Para habilitar a exibição dos números de linha (`Show Line Numbers`) no `TeXs
 
 Agora os números de linha devem aparecer no lado esquerdo do editor, facilitando a navegação e o acompanhamento do código.
 
-
 ## 9. Compilar o Arquivo Ativo Definindo-o como Documento Raiz
 
 Aqui está o passo a passo para compilar apenas o arquivo ativo no `TeXstudio`, definindo-o como o Documento Raiz:
@@ -341,6 +326,15 @@ Aqui está o passo a passo para compilar apenas o arquivo ativo no `TeXstudio`, 
 
 Este procedimento assegura que o `TeXstudio` irá compilar apenas o documento ativo e ignorar outros arquivos, exceto se houver referências explícitas dentro do arquivo que você está compilando.
 
+## 10. Abrir instâncias do `TeXstudio`
+
+Para abrir uma nova instância do `TeXstudio`, execute o comando abaixo no terminal:
+
+```bash
+texstudio -new-instance &
+```
+
+Cada execução desse comando inicia uma instância independente do editor, permitindo trabalhar em projetos distintos simultaneamente.
 
 ## Referências
 
