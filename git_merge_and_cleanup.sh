@@ -27,7 +27,7 @@ done < <(git branch --format='%(refname:short)' | sort -u)
 while read -r rb; do
   name="${rb#origin/}"
   # Ignora HEAD e duplicatas
-  if [[ "$name" = "HEAD" ]] || [[ " ${BRANCHES[*]} " =~ " $name " ]]; then
+  if [[ "$name" = "HEAD" ]] || [[ "$name" = "origin" ]] || [[ " ${BRANCHES[*]} " =~ " $name " ]]; then
     continue
   fi
   BRANCHES+=("$name")
@@ -103,11 +103,6 @@ if ! [[ "$TGT_NUM" =~ ^[0-9]+$ ]] || [ "$TGT_NUM" -lt 1 ] || [ "$TGT_NUM" -gt "$
 fi
 TGT_BRANCH="${BRANCHES[$((TGT_NUM-1))]}"
 echo "[INFO] TARGET branch: $TGT_BRANCH"
-
-if [ "$SRC_BRANCH" = "$TGT_BRANCH" ]; then
-  echo "[ERROR] SOURCE and TARGET cannot be the same."
-  exit 1
-fi
 
 # --- SSH key check ---
 if ssh-add -l >/dev/null 2>&1; then
