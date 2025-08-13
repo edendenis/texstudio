@@ -1,0 +1,24 @@
+name: Build main_thesis
+
+on:
+  push: {}          # Dispara em todo push, em qualquer branch
+  pull_request: {}  # Dispara em toda PR, de qualquer branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install LaTeX
+        run: sudo apt-get update && sudo apt-get install -y texlive-full
+      - name: Build main_thesis.pdf
+        run: |
+          pdflatex -synctex=1 -interaction=batchmode $(ls main*.tex | head -n 1)
+      - name: Verify main_thesis.pdf
+        run: test -s main_thesis.pdf
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: main_thesis-pdf
+          path: main_thesis.pdf

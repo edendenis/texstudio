@@ -1,0 +1,12 @@
+[submodule "codes/python/praeparatio"]
+	path = codes/python/praeparatio
+	url = git@github.com:edendenis/praeparatio.git
+[submodule "codes/python/big_rocket_data"]
+	path = codes/python/big_rocket_data
+	url = git@github.com:edendenis/big_rocket_data.git
+[submodule "codes/python/audithas"]
+	path = codes/python/audithas
+	url = git@github.com:edendenis/audithas.git
+[submodule "codes/python/k_means_thesis"]
+	path = codes/python/k_means_thesis
+	url = git@github.com:edendenis/k_means_thesis.git
