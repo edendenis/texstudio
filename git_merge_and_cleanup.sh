@@ -9,6 +9,20 @@ set -euo pipefail
 # ---------- util ----------
 run() { echo "+ $*"; "$@"; }
 
+# Busca indice (1-based) de um nome dentro do array BRANCHES; retorna 0 se nao achar
+index_of_branch() {
+  local name="$1"
+  local i=0
+  for b in "${BRANCHES[@]}"; do
+    i=$((i+1))
+    if [ "$b" = "$name" ]; then
+      echo "$i"
+      return 0
+    fi
+  done
+  echo 0
+}
+
 # ---------- fetch ----------
 echo "[INFO] Fetching all branches from remote..."
 run git fetch --all
@@ -23,16 +37,24 @@ while read -r b; do
   BRANCHES+=("$b")
 done < <(git branch --format='%(refname:short)' | sort -u)
 
-# Remotas reais: refs/remotes/origin/*, ignorando origin/HEAD
+# Remotas reais: apenas refs em refs/remotes/origin/*, ignorando origin/HEAD
 while read -r rb; do
+  # rb vem como "origin/<nome>"
   name="${rb#origin/}"
-  if [[ "$name" = "HEAD" ]] || [[ "$name" = "origin" ]] || [[ " ${BRANCHES[*]} " =~ " $name " ]]; then
-    continue
+  # ignora HEAD e qualquer anomalia
+  { [ "$name" = "HEAD" ] || [ -z "$name" ] || [ "$name" = "origin" ]; } && continue
+  # adiciona se ainda nao estiver na lista
+  if ! printf '%s\0' "${BRANCHES[@]}" | grep -Fxqz -- "$name"; then
+    BRANCHES+=("$name")
   fi
-  BRANCHES+=("$name")
-done < <(git for-each-ref --format='%(refname:short)' refs/remotes/origin | sort -u)
+done < <(git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/*' | sort -u)
 
-# Mostrar numeradas
+if [ "${#BRANCHES[@]}" -eq 0 ]; then
+  echo "[ERROR] No branches found."
+  exit 1
+fi
+
+# Mostrar numeradas com marcador (local/remote)
 echo "[INFO] Available branches:"
 idx=1
 for b in "${BRANCHES[@]}"; do
@@ -45,21 +67,40 @@ for b in "${BRANCHES[@]}"; do
   idx=$((idx+1))
 done
 
-# ---------- default SOURCE ----------
-LAST_REMOTE_BRANCH="$(git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/remotes/origin \
-  | grep -v '^origin/HEAD$' | sed 's|^origin/||' | head -n 1 || true)"
+# ---------- default da SOURCE: ultima remota atualizada ----------
+LAST_REMOTE_BRANCH="$(
+  git for-each-ref --sort=-committerdate --format='%(refname:short)' 'refs/remotes/origin/*' \
+  | grep -v '^origin/HEAD$' \
+  | sed 's|^origin/||' \
+  | grep -v '^origin$' \
+  | head -n 1 || true
+)"
 
 DEFAULT_SRC_INDEX=1
 if [ -n "${LAST_REMOTE_BRANCH:-}" ]; then
-  for i in "${!BRANCHES[@]}"; do
-    if [ "${BRANCHES[$i]}" = "$LAST_REMOTE_BRANCH" ]; then
-      DEFAULT_SRC_INDEX=$((i+1))
-      break
-    fi
-  done
+  found_idx="$(index_of_branch "$LAST_REMOTE_BRANCH")"
+  if [ "$found_idx" -gt 0 ]; then
+    DEFAULT_SRC_INDEX="$found_idx"
+  fi
 fi
 
-# Escolher SOURCE
+# ---------- default da TARGET: branch atual ----------
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+DEFAULT_TGT_INDEX="$(index_of_branch "$CURRENT_BRANCH")"
+# se nao achar a atual na lista (raro), tenta 'main'
+if [ "$DEFAULT_TGT_INDEX" -eq 0 ]; then
+  DEFAULT_TGT_INDEX="$(index_of_branch main)"
+fi
+# fallback para 1 se ainda 0
+[ "$DEFAULT_TGT_INDEX" -eq 0 ] && DEFAULT_TGT_INDEX=1
+# evita defaults iguais
+if [ "$DEFAULT_TGT_INDEX" -eq "$DEFAULT_SRC_INDEX" ]; then
+  DEFAULT_TGT_INDEX=1
+  [ "$DEFAULT_TGT_INDEX" -eq "$DEFAULT_SRC_INDEX" ] && DEFAULT_TGT_INDEX=2
+  [ "$DEFAULT_TGT_INDEX" -gt "${#BRANCHES[@]}" ] && DEFAULT_TGT_INDEX=1
+fi
+
+# ---------- escolher SOURCE ----------
 echo -n "Enter the number of the SOURCE branch to merge FROM [default: ${DEFAULT_SRC_INDEX}]: "
 read -r SRC_NUM
 SRC_NUM=${SRC_NUM:-$DEFAULT_SRC_INDEX}
@@ -70,25 +111,7 @@ fi
 SRC_BRANCH="${BRANCHES[$((SRC_NUM-1))]}"
 echo "[INFO] SOURCE branch: $SRC_BRANCH"
 
-# ---------- default TARGET ----------
-current_branch="$(git rev-parse --abbrev-ref HEAD)"
-DEFAULT_TGT_INDEX=1
-for i in "${!BRANCHES[@]}"; do
-  if [ "${BRANCHES[$i]}" = "$current_branch" ]; then
-    DEFAULT_TGT_INDEX=$((i+1))
-    break
-  fi
-done
-if [ "$DEFAULT_TGT_INDEX" -eq 1 ] && [ "$current_branch" != "main" ]; then
-  for i in "${!BRANCHES[@]}"; do
-    if [ "${BRANCHES[$i]}" = "main" ]; then
-      DEFAULT_TGT_INDEX=$((i+1))
-      break
-    fi
-  done
-fi
-
-# Escolher TARGET
+# ---------- escolher TARGET ----------
 echo -n "Enter the number of the TARGET branch to merge INTO [default: ${DEFAULT_TGT_INDEX}]: "
 read -r TGT_NUM
 TGT_NUM=${TGT_NUM:-$DEFAULT_TGT_INDEX}
@@ -99,16 +122,17 @@ fi
 TGT_BRANCH="${BRANCHES[$((TGT_NUM-1))]}"
 echo "[INFO] TARGET branch: $TGT_BRANCH"
 
-# --- SSH key check ---
-if ssh-add -l >/dev/null 2>&1; then
-    echo "[INFO] SSH key already loaded in agent."
-else
-    echo "[INFO] No SSH key loaded. Starting ssh-agent..."
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_rsa
+if [ "$SRC_BRANCH" = "$TGT_BRANCH" ]; then
+  echo "[ERROR] SOURCE and TARGET cannot be the same."
+  exit 1
 fi
 
-# ---------- commit de segurança ----------
+# ---------- ssh agent (opcional) ----------
+eval "$(ssh-agent -s)" >/dev/null 2>&1 || true
+ssh-add ~/.ssh/id_rsa >/dev/null 2>&1 || true
+ssh -T git@github.com || true  # mensagem "no shell access" e esperada
+
+# ---------- commit de seguranca ----------
 if [[ -n $(git status --porcelain) ]]; then
   echo "[INFO] Local changes detected. Performing automatic commit..."
   run git add .
@@ -162,7 +186,7 @@ fi
 run git status --short
 run git push
 
-# ---------- limpeza local ----------
+# ---------- limpeza local (opcional) ----------
 echo "[INFO] Optional cleanup of non-protected local branches..."
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
 git branch --format='%(refname:short)' \
@@ -177,9 +201,11 @@ git branch --format='%(refname:short)' \
       git branch -D "$delb" || true
     done
 
-# ---------- limpeza remota ----------
+git branch | cat
+
+# ---------- limpeza remota (segura) ----------
 echo "[INFO] Optional cleanup of non-protected remote branches..."
-git for-each-ref --format='%(refname:short)' refs/remotes/origin \
+git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/*' \
   | grep -v '^origin/HEAD$' \
   | sed 's|^origin/||' \
   | grep -v '^origin$' \
@@ -188,11 +214,10 @@ git for-each-ref --format='%(refname:short)' refs/remotes/origin \
       index($0,"main")==0 && index($0,"edf")==0 && index($0,"iae")==0 &&
       index($0,"ita")==0  && index($0,"ufabc")==0
     ' \
-  | while read -r rdelb; do
-      [ -z "$rdelb" ] && continue
-      echo "[INFO] Deleting remote branch: $rdelb"
-      git push origin --delete "$rdelb" || true
-    done
+  | xargs -r -I {} sh -c '
+      echo "[INFO] Deleting remote branch: {}"
+      git push origin --delete "{}" || true
+    '
 
 echo "[INFO] Done."
 git branch -r | cat
